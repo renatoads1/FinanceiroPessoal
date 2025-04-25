@@ -1,12 +1,16 @@
-﻿namespace FinanceiroPessoal
+﻿using FinanceiroPessoal.Views;
+using System.Globalization;
+
+namespace FinanceiroPessoal
 {
     public partial class App : Application
     {
-        public App()
+        public App(ListaTransacao listar)
         {
             InitializeComponent();
-
-            MainPage = new AppShell();
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
+            MainPage = new NavigationPage(listar);
         }
     }
 }

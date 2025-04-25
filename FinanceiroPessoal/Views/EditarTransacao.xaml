@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanceiroPessoal.Views.EditarTransacao"
+             Title="Editar Transacao">
+    <VerticalStackLayout Spacing="10">
+        <Border BackgroundColor="Black" Padding="15" Margin="15" Stroke="Transparent" StrokeShape="RoundRectangle 10">
+            <Label Margin="30" TextColor="red" IsVisible="False" x:Name="lblErro"/>
+            <Grid RowDefinitions="Auto" ColumnDefinitions="*,30">
+                <Label TextColor="White" HorizontalTextAlignment="Center" Text="Atualizar" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
+                <Label TextColor="White" HorizontalTextAlignment="Center"  Text="x" FontSize="Large" Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
+                    <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="FechaPage" 
+                        NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </Border>
+        <Grid ColumnDefinitions="*,*" Margin="30,5">
+            <RadioButton TextColor="#989898" x:Name="RadioReceita" Grid.Row="0" Grid.Column="0" IsChecked="True" Content="Receita"/>
+            <RadioButton TextColor="#989898" x:Name="RadioDespesa" HorizontalOptions="End" Grid.Row="0" Grid.Column="1" IsChecked="False" Content="Despesa"/>
+        </Grid>
+        <Entry x:Name="EntryId" IsVisible="False"/>
+        <Entry PlaceholderColor="White"  x:Name="EntryNome" Margin="15,10"  Placeholder="Nome"/>
+
+        <DatePicker TextColor="#989898" x:Name="Entrydata" Margin="15,10" Format="dd/MM/yyyy"  />
+
+        <Entry TextColor="#989898" x:Name="EntryValor" Margin="15,10" Placeholder="Valor"/>
+        
+        <Button Text="Editar" Clicked="Button_ClickedEditar" Margin="15,10"/>
+    </VerticalStackLayout>
+</ContentPage>

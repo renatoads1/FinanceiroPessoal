@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanceiroPessoal.Views.ListaTransacao"
+             Title="ListaTransacao"
+             NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout>
+        <CollectionView x:Name="ListTrans" MaximumHeightRequest="600" VerticalScrollBarVisibility="Always" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="50,*,Auto" Padding="15">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
+                        </Grid.GestureRecognizers>
+                        <Border WidthRequest="40" 
+                                HeightRequest="40" 
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 20">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="Excluir" />
+                            </Border.GestureRecognizers>
+                            <Label Text="S" BackgroundColor="White" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="28"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label TextColor="#979797" Text="{Binding Nome}"/>
+                            <Label TextColor="#979797" Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label Text="{Binding Valor,StringFormat='{0:C}'}" TextColor="#989898"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        <!--<Button Text="+" Clicked="GoToAdd" Margin="15,10" />-->
+
+        
+        <Border BackgroundColor="Black" Margin="15" Stroke="Transparent" Padding="15" StrokeShape="RoundRectangle 30" >
+            <Grid ColumnDefinitions="*,80" RowDefinitions="Auto,Auto,30,Auto,Auto">
+                <Label  Text="Saldo" Grid.Row="0" TextColor="#979797"/>
+                <Label x:Name="_saldo" Text="300" Grid.Row="1"  TextColor="White" FontSize="36"/>
+                <Button Text="+" Clicked="GoToAdd" Padding="-10" FontSize="52" HeightRequest="52" WidthRequest="48" CornerRadius="30" Grid.Column="1" Grid.RowSpan="2"  TextColor="Black" BackgroundColor="White" />
+                <Label  Text="Receitas" Grid.Row="3" Grid.Column="0"  TextColor="#979797"/>
+                <Label x:Name="_receita" Text="300" Grid.Row="4" Grid.Column="0"  TextColor="White"/>
+                <Label  Text="Despesas" Grid.Row="3" Grid.Column="1"  TextColor="#979797"/>
+                <Label x:Name="_despesa" Text="300" Grid.Row="4" Grid.Column="1"  TextColor="White"/>
+            </Grid>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>
