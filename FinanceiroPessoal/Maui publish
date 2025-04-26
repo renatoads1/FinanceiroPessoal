@@ -1,0 +1,6 @@
+Maui publish
+keytool -genkeypair -v -keystore financeiropessoal.keystore -alias renatoads1 -keyalg RSA -keysize 2048 -validity 10000
+
+dotnet publish FinanceiroPessoal.csproj -f:net8.0-android -c Release /p:AndroidSigningKeyPass=r3n4t0321 /p:AndroidSigningStorePass=r3n4t0321 /p:AndroidSigningKeyAlias=renatoads1 /p:AndroidStore=True
+
+salvo em C:\Users\renat\source\repos\FinanceiroPessoal\FinanceiroPessoal\bin\Release\net8.0-android
